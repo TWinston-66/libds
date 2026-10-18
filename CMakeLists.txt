@@ -24,6 +24,7 @@ set_target_properties(criterion::criterion PROPERTIES
 # Core library
 add_library(ds STATIC
     libds/src/dlist.c
+    libds/src/stack.c
 )
 target_include_directories(ds PUBLIC libds/include)
 target_compile_options(ds PRIVATE -Wall -Wextra -Wpedantic)
@@ -36,4 +37,9 @@ add_executable(test_dlist libds/test/test_dlist.c)
 target_link_libraries(test_dlist PRIVATE ds criterion::criterion)
 target_compile_options(test_dlist PRIVATE -Wall -Wextra -Wpedantic)
 
+add_executable(test_stack libds/test/test_stack.c)
+target_link_libraries(test_stack PRIVATE ds criterion::criterion)
+target_compile_options(test_stack PRIVATE -Wall -Wextra -Wpedantic)
+
 add_test(NAME test_dlist COMMAND test_dlist)
+add_test(NAME test_stack COMMAND test_stack)

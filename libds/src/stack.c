@@ -3,15 +3,13 @@
 
 #include <stddef.h>
 
-#include "ds/dlist.h"
-
 /// BASE ///
 
 void ds_stack_init(ds_stack *stack) {
     ds_dlist_init(&stack->list);
 }
 
-bool ds_stack_empty(ds_stack *stack) {
+bool ds_stack_empty(const ds_stack *stack) {
     return ds_dlist_empty(&stack->list);
 }
 

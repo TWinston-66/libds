@@ -14,7 +14,7 @@ typedef struct ds_stack {
 /// BASE ///
 
 void ds_stack_init(ds_stack *stack);
-bool ds_stack_empty(ds_stack *stack);
+bool ds_stack_empty(const ds_stack *stack);
 
 /// CORE ///
 

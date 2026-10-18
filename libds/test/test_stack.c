@@ -27,11 +27,11 @@ Test(stack, push) {
 
     // head <-> b <-> a <-> head
     cr_assert_eq(stack.list.head.next, &b);
-    cr_assert_eq(b.lnode.next, &a);
+    cr_assert_eq(b.lnode.next, &a.lnode);
     cr_assert_eq(a.lnode.next, &stack.list.head);
 
     cr_assert_eq(stack.list.head.prev, &a);
-    cr_assert_eq(a.lnode.prev, &b);
+    cr_assert_eq(a.lnode.prev, &b.lnode);
     cr_assert_eq(b.lnode.prev, &stack.list.head);
 }
 
@@ -45,9 +45,9 @@ Test(stack, pop) {
     cr_assert_eq(ds_stack_pop(&stack), &b);
 
     // head <-> a <-> head
-    cr_assert_eq(stack.list.head.next, &a);
+    cr_assert_eq(stack.list.head.next, &a.lnode);
     cr_assert_eq(a.lnode.next, &stack.list.head);
 
-    cr_assert_eq(stack.list.head.prev, &a);
+    cr_assert_eq(stack.list.head.prev, &a.lnode);
     cr_assert_eq(a.lnode.prev, &stack.list.head);
 }
