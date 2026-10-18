@@ -1,0 +1,25 @@
+[
+  {
+    "label": "cmake: configure",
+    "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "cmake: build",
+    "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "run libds",
+    "command": "cmake --build build && ./build/libds",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "cmake: clean",
+    "command": "rm -rf build",
+    "reveal": "never"
+  }
+]
