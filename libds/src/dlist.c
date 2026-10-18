@@ -2,7 +2,7 @@
 
 #include <stddef.h>
 
-///// BASE /////
+/// BASE ///
 
 void ds_dlist_init(ds_dlist *list) {
     list->head.next = &list->head;
@@ -32,7 +32,7 @@ void ds_dlist_insert_after(ds_dlist_node *pos, ds_dlist_node *node) {
     tmp->prev = node;
 }
 
-///// CORE /////
+/// CORE ///
 
 // push
 void ds_dlist_push_back(ds_dlist *list, ds_dlist_node *node) {

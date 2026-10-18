@@ -10,7 +10,7 @@ static void setup(void) {
 
 TestSuite(dlist, .init = setup);
 
-///// BASE /////
+/// BASE ///
 
 Test(dlist, starts_empty) {
     cr_assert(ds_dlist_empty(&list));
@@ -21,6 +21,7 @@ Test(dlist, insert_before) {
     ds_dlist_node a, b;
 
     ds_dlist_push_back(&list, &a);
+
     ds_dlist_insert_before(&a, &b);
 
     // head <-> b <-> a <-> head
@@ -37,6 +38,7 @@ Test(dlist, insert_after) {
     ds_dlist_node a, b;
 
     ds_dlist_push_back(&list, &a);
+
     ds_dlist_insert_after(&a, &b);
 
     // head <-> a <-> b <-> head
@@ -49,7 +51,7 @@ Test(dlist, insert_after) {
     cr_assert_eq(b.prev, &a);
 }
 
-///// CORE /////
+/// CORE ///
 
 // Push
 Test(dlist, push_back) {
@@ -106,6 +108,7 @@ Test(dlist, pop_front) {
 
     ds_dlist_push_back(&list, &a);
     ds_dlist_push_back(&list, &b);
+
     ds_dlist_pop_front(&list);
 
     // head <-> b <-> head
@@ -130,6 +133,7 @@ Test(dlist, remove) {
     ds_dlist_push_back(&list, &a);
     ds_dlist_push_back(&list, &b);
     ds_dlist_push_back(&list, &c);
+
     ds_dlist_remove(&b);
 
     // head <-> a <-> c <-> head
