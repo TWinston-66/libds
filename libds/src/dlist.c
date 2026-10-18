@@ -32,7 +32,6 @@ void ds_dlist_insert_after(ds_dlist_node *pos, ds_dlist_node *node) {
     tmp->prev = node;
 }
 
-
 ///// CORE /////
 
 // push
