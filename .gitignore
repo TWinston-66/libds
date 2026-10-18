@@ -6,3 +6,4 @@ compile_commands.json
 xcuserdata/
 .gemini
 .agents
+__cmake_systeminformation/CMakeFiles/
