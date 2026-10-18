@@ -1,25 +1,37 @@
 [
   {
-    "label": "cmake: configure",
-    "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug",
+    "label": "make configure",
+    "command": "make configure",
     "use_new_terminal": false,
     "reveal": "always"
   },
   {
-    "label": "cmake: build",
-    "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build",
+    "label": "make build",
+    "command": "make build",
     "use_new_terminal": false,
     "reveal": "always"
   },
   {
-    "label": "run libds",
-    "command": "cmake --build build && ./build/libds",
+    "label": "make test",
+    "command": "make test",
     "use_new_terminal": false,
     "reveal": "always"
   },
   {
-    "label": "cmake: clean",
-    "command": "rm -rf build",
+    "label": "run test_dlist",
+    "command": "make build && ./build/test_dlist",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "make format",
+    "command": "make format",
+    "use_new_terminal": false,
+    "reveal": "never"
+  },
+  {
+    "label": "make clean",
+    "command": "make clean",
     "reveal": "never"
   }
 ]
