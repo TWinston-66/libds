@@ -34,7 +34,7 @@ void ds_dlist_insert_after(ds_dlist_node *pos, ds_dlist_node *node) {
 
 /// CORE ///
 
-// push
+// Push
 void ds_dlist_push_back(ds_dlist *list, ds_dlist_node *node) {
     ds_dlist_insert_before(&list->head, node);
 }
@@ -43,7 +43,7 @@ void ds_dlist_push_front(ds_dlist *list, ds_dlist_node *node) {
     ds_dlist_insert_after(&list->head, node);
 }
 
-// pop
+// Pop
 ds_dlist_node *ds_dlist_pop_back(ds_dlist *list) {
     if (ds_dlist_empty(list))
         return NULL;
@@ -53,14 +53,15 @@ ds_dlist_node *ds_dlist_pop_back(ds_dlist *list) {
 }
 
 ds_dlist_node *ds_dlist_pop_front(ds_dlist *list) {
-    if (ds_dlist_empty(list))
+    if (ds_dlist_empty(list)) {
         return NULL;
+    }
     ds_dlist_node *node = list->head.next;
     ds_dlist_remove(node);
     return node;
 }
 
-// remove
+// Remove
 void ds_dlist_remove(ds_dlist_node *node) {
     node->prev->next = node->next;
     node->next->prev = node->prev;
