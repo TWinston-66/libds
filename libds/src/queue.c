@@ -1,5 +1,4 @@
 #include <ds/queue.h>
-
 #include <ds/util.h>
 
 #include <stddef.h>
