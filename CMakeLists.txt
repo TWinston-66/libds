@@ -26,6 +26,8 @@ add_library(ds STATIC
     libds/src/dlist.c
     libds/src/stack.c
     libds/src/queue.c
+    libds/src/alloc/default.c
+    libds/src/alloc/arena.c
 )
 target_include_directories(ds PUBLIC libds/include)
 target_compile_options(ds PRIVATE -Wall -Wextra -Wpedantic)
@@ -46,6 +48,16 @@ add_executable(test_queue libds/test/test_queue.c)
 target_link_libraries(test_queue PRIVATE ds criterion::criterion)
 target_compile_options(test_queue PRIVATE -Wall -Wextra -Wpedantic)
 
+add_executable(test_default libds/test/alloc/test_default.c)
+target_link_libraries(test_default PRIVATE ds criterion::criterion)
+target_compile_options(test_default PRIVATE -Wall -Wextra -Wpedantic)
+
+add_executable(test_arena libds/test/alloc/test_arena.c)
+target_link_libraries(test_arena PRIVATE ds criterion::criterion)
+target_compile_options(test_arena PRIVATE -Wall -Wextra -Wpedantic)
+
 add_test(NAME test_dlist COMMAND test_dlist)
 add_test(NAME test_stack COMMAND test_stack)
 add_test(NAME test_queue COMMAND test_queue)
+add_test(NAME test_default COMMAND test_default)
+add_test(NAME test_arena COMMAND test_arena)

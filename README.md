@@ -20,9 +20,46 @@ Stack and queue are thin wrappers over the doubly linked list.
 - Vector Stack
 - Ring Buffer
 
+## Allocators
+
+`ds_alloc` (`<ds/alloc/alloc.h>`) is a small vtable of `alloc`, `realloc`, and
+`free`, plus a `ctx` pointer passed back to each call. Every call takes an
+`align` (must be a power of two) and the block's size, so allocators can be
+sized and alignment-aware.
+
+- **libc** (`<ds/alloc/default.h>`): `malloc` / `realloc` / `free`, falling back
+  to `aligned_alloc` for alignments above `max_align_t`
+- **Arena** (`<ds/alloc/arena.h>`): bump allocator over a caller-owned buffer.
+  `free` only reclaims the most recent allocation; `ds_arena_reset` releases
+  everything at once
+
+```c
+static unsigned char buf[4096];
+ds_arena arena = {buf, sizeof(buf), 0};
+
+ds_alloc a = {
+    .alloc = ds_arena_alloc,
+    .realloc = ds_arena_realloc,
+    .free = ds_arena_free,
+    .ctx = &arena,
+};
+
+int *xs = a.alloc(a.ctx, 16 * sizeof(int), _Alignof(int));
+```
+
+See `alloc.h` for the full contract (failure behaviour, size 0, etc.).
+
+## Building
+
+```sh
+make          # configure + build (Debug)
+make test     # build + run tests (Criterion)
+make format   # clang-format
+```
+
 ## Roadmap
 
-1. Allocator
+1. Allocator (done)
 2. Vector (uses allocator)
 3. Vector based Stack (owning)
 4. Ring Buffer (owning)
