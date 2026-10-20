@@ -1,18 +1,13 @@
+#ifndef DS_DEFAULT_H
+#define DS_DEFAULT_H
+
 #include <stddef.h>
-#include <stdlib.h>
 
-static void *libc_malloc(void *ctx, size_t size) {
-    (void)ctx;
-    return malloc(size);
-}
+void *ds_libc_malloc(void *ctx, size_t size, size_t align);
 
-static void *libc_realloc(void *ctx, void *ptr, size_t old, size_t new) {
-    (void)ctx;
-    (void)old;
-    return realloc(ptr, new);
-}
-static void libc_free(void *ctx, void *ptr, size_t sz) {
-    (void)ctx;
-    (void)sz;
-    free(ptr);
-}
+void *ds_libc_realloc(void *ctx, void *ptr, size_t old_size, size_t new_size,
+                      size_t align);
+
+void ds_libc_free(void *ctx, void *ptr, size_t size);
+
+#endif
